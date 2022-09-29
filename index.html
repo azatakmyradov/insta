@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insta</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="w-full md:w-[40%] mx-auto pt-2 pl-2" id="app">
+        <h1 class="text-center text-2xl">Instagram Line Break</h1>
+
+        <div class="flex flex-col mt-4">
+            <button @click="generate">Generate & Copy Caption</button>
+            <textarea name="caption" id="" cols="30" rows="10" class="border" ref="caption" v-model="caption"></textarea>
+        </div>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    caption: ''
+                }
+            },
+            methods: {
+                generate() {
+                    this.$refs.caption.select();
+                    document.execCommand('copy');
+                }
+            }
+        })
+
+        app.mount('#app')
+    </script>
+</body>
+</html>
